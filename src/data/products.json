@@ -1,0 +1,599 @@
+[
+  {
+    "id": "VP-PF-100",
+    "name": "Paste Filling Machine - VP PF 100/500/1000",
+    "category": "Paste Filling Machine",
+    "description": "High-precision paste filling machine for industrial applications.",
+    "image": "/products/PastefM/14.png",
+    "fallbackImage": "/custom-machine.png",
+    "specs": {
+      "VOLTAGE": "220V/50Hz",
+      "POWER": "20",
+      "FILLING RANGE": "10-100 / 50-500 / 100-1000",
+      "FILLING CAPACITY": "10-18",
+      "FILLING ACCURACY": "<1%",
+      "DIMENSION": "100*50*105",
+      "WEIGHT": "30 / 35 / 40",
+      "GAS PRESSURE": "0.4-0.6"
+    }
+  },
+  {
+    "id": "VP-1000P",
+    "name": "Paste Filling Machine - VP 1000P",
+    "category": "Paste Filling Machine",
+    "description": "Robust paste filling machine designed for high volume production.",
+    "image": "/products/PastefM/15.png",
+    "fallbackImage": "/expertise.png",
+    "specs": {
+      "VOLTAGE": "220V/50Hz",
+      "POWER": "20",
+      "FILLING RANGE": "10-100 / 50-500 / 100-1000",
+      "FILLING CAPACITY": "10-18",
+      "FILLING ACCURACY": "<1%",
+      "DIMENSION": "100*50*105",
+      "WEIGHT": "30 / 35 / 40",
+      "GAS PRESSURE": "0.4-0.6"
+    }
+  },
+  {
+    "id": "VP-LF-100",
+    "name": "Liquid Filling Machine - VP LF 100/500/1000",
+    "category": "Paste Filling Machine",
+    "description": "Versatile liquid filling solution for various viscosity levels.",
+    "image": "/products/PastefM/16.png",
+    "fallbackImage": "/expertise.png",
+    "specs": {
+      "VOLTAGE": "220V/50Hz",
+      "POWER": "20",
+      "FILLING RANGE": "10-100 / 50-500 / 100-1000",
+      "FILLING CAPACITY": "10-18",
+      "FILLING ACCURACY": "<1%",
+      "DIMENSION": "100*50*105",
+      "WEIGHT": "30 / 35 / 40",
+      "GAS PRESSURE": "0.4-0.6"
+    }
+  },
+  {
+    "id": "VP-50",
+    "name": "Manual Paste Filling Machine - VP 50",
+    "category": "Paste Filling Machine",
+    "description": "Simple and efficient manual paste filling machine.",
+    "image": "/products/PastefM/17.png",
+    "fallbackImage": "/custom-machine.png",
+    "specs": {
+      "OPERATION": "Manual",
+      "TYPE": "Paste Filling"
+    }
+  },
+  {
+    "id": "VP-101BPT",
+    "name": "Battery Powered Strapping Tool - VP 101BPT",
+    "category": "Pet Strapping Tool",
+    "description": "Portable battery-powered tool for efficient PET/PP strapping.",
+    "image": "/products/STRAPPINGTOOL/BatteryPoweredST.jpg",
+    "fallbackImage": "/custom-machine.png",
+    "specs": {
+      "STRAP WIDTH": "13-16 Adjustable",
+      "STRAP THICKNESS": "0.5-1.0",
+      "WEIGHT": "3.9 kg",
+      "SIZE": "375 * 130 * 140",
+      "TENSION": "40-200",
+      "SEAL TYPE": "Friction Weld",
+      "STRAP MATERIAL": "PET/PP",
+      "BATTERY": "Up to 200 cycles"
+    }
+  },
+  {
+    "id": "VP-19-SST",
+    "name": "Steel Strapping Tool - VP 19 SST",
+    "category": "Pet Strapping Tool",
+    "description": "Heavy-duty steel strapping tool for industrial security.",
+    "image": "/products/STRAPPINGTOOL/SteelST.jpg",
+    "fallbackImage": "/expertise.png",
+    "specs": {
+      "STRAP WIDTH": "13-16-19mm",
+      "ITEM CODE": "A-333",
+      "STRAP THICKNESS": "0.38-0.58",
+      "NET WEIGHT": "3.8 KG"
+    }
+  },
+  {
+    "id": "VP-101-PNT",
+    "name": "Pneumatic Strapping Tool - VP 101 PNT",
+    "category": "Pet Strapping Tool",
+    "description": "High-tension pneumatic strapping tool for heavy loads.",
+    "image": "/products/STRAPPINGTOOL/PPst.jpeg",
+    "fallbackImage": "/custom-machine.png",
+    "specs": {
+      "STRAP WIDTH": "13-19 ADJUSTABLE",
+      "STRAP THICKNESS": "1.0-1.5",
+      "WEIGHT": "3.8",
+      "SIZE": "275*115*130",
+      "TENSION": "200",
+      "SEAL TYPE": "FRICTION WELD",
+      "PRESSURE": "5-7 BAR",
+      "STRAP MATERIAL": "PET/PP",
+      "NET WEIGHT": "3.8KG"
+    }
+  },
+  {
+    "id": "VP-PGF200",
+    "name": "Powder and Granule Filler - VP PGF200",
+    "category": "Pouch Packing Machine",
+    "description": "Stainless steel filler for powders and granules up to 200g.",
+    "image": "/products/ppm/25.png",
+    "fallbackImage": "/custom-machine.png",
+    "specs": {
+      "VOLTAGE": "220V/50Hz",
+      "POWER": "50W",
+      "MATERIAL": "Stainless Steel",
+      "PACKAGING RANGE": "10-200g",
+      "DIMENSION": "500*370*810mm",
+      "PACKAGING SPEED": "5-12 Bags/Min"
+    }
+  },
+  {
+    "id": "VP-PGF999",
+    "name": "Powder and Granule Filler - VP PGF999",
+    "category": "Pouch Packing Machine",
+    "description": "Large capacity powder and granule filler up to 999g.",
+    "image": "/products/ppm/26.png",
+    "fallbackImage": "/expertise.png",
+    "specs": {
+      "VOLTAGE": "220V/50Hz",
+      "POWER": "50W",
+      "MATERIAL": "Stainless Steel",
+      "PACKAGING RANGE": "10-999g",
+      "DIMENSION": "300*500*1250mm",
+      "PACKAGING SPEED": "5-12 Bags/Min"
+    }
+  },
+  {
+    "id": "VP-PP700",
+    "name": "Pad Printer - VP PP700",
+    "category": "Printers",
+    "description": "High-speed pad printer for industrial marking.",
+    "image": "/products/printer/padPinter.png",
+    "fallbackImage": "/custom-machine.png",
+    "specs": {
+      "VOLTAGE": "220V/50Hz",
+      "POWER": "180",
+      "PRINTING SPEED": "100",
+      "OBJECT SIZE": "50",
+      "DIMENSION": "435*405*560",
+      "NET WEIGHT": "21"
+    }
+  },
+  {
+    "id": "VP-SCPP",
+    "name": "Single Color Pad Printer (Floor Model)",
+    "category": "Printers",
+    "description": "Pneumatic single color pad printer for large objects.",
+    "image": "/products/printer/SingleColorPadP.png",
+    "fallbackImage": "/expertise.png",
+    "specs": {
+      "DIMENSION": "1075 * 520 *660",
+      "WEIGHT": "75",
+      "PRINTING AREA": "85 L * 85 W",
+      "POWER SUPPLY": "Ac 220v/50-60Hz",
+      "PRINTING SPEED": "4200"
+    }
+  },
+  {
+    "id": "VP-HIP",
+    "name": "Ink Jet Coder - VP HIP",
+    "category": "Printers",
+    "description": "Handheld ink jet coder for flexible industrial printing.",
+    "image": "/products/printer/InkJetCoder.png",
+    "fallbackImage": "/custom-machine.png",
+    "specs": {
+      "HEIGHT": "12-7mm",
+      "DISTANCE": "2-5mm",
+      "SPEED": "70m/min",
+      "INK COLOUR": "Black, Blue, Red",
+      "POWER": "Less Than 5w",
+      "DIMENSION": "120*100*240 mm",
+      "WEIGHT": "0.8 kg"
+    }
+  },
+  {
+    "id": "VP-600",
+    "name": "Drying Coding Machine - VP 600",
+    "category": "Printers",
+    "description": "Solid ink coding machine with rapid drying.",
+    "image": "/products/printer/Dryibc.jpg",
+    "fallbackImage": "/expertise.png",
+    "specs": {
+      "VOLTAGE": "220V/50Hz",
+      "POWER": "180",
+      "PRINTING SPEED": "100",
+      "OBJECT SIZE": "50-500",
+      "PRINTING TYPE": "Solid Ink Coding",
+      "DIMENSION": "440*465*300",
+      "WEIGHT": "26"
+    }
+  },
+  {
+    "id": "VP-241",
+    "name": "Ribbon Coding Machine - VP 241",
+    "category": "Printers",
+    "description": "Reliable ribbon coding machine for clear date printing.",
+    "image": "/products/printer/RIBBONcm.jpg",
+    "fallbackImage": "/custom-machine.png",
+    "specs": {
+      "VOLTAGE": "220V/50Hz",
+      "POWER": "220W",
+      "PRINTING SPEED": "0-100",
+      "RIBBON WIDTH": "35",
+      "DIMENSION": "255*255*325",
+      "WEIGHT": "10"
+    }
+  },
+  {
+    "id": "VP-TIJ",
+    "name": "TIJ Inkjet Printer - VP TIJ",
+    "category": "Printers",
+    "description": "Advanced thermal inkjet printer with touch screen control.",
+    "image": "/products/printer/TIJp.jpg",
+    "fallbackImage": "/expertise.png",
+    "specs": {
+      "CONTROL": "Touch Screen",
+      "SPEED": "60M/MIN",
+      "ACCURACY": "600DPI",
+      "HEIGHT": "2-12.5MM",
+      "CODE TYPE": "BAR CODE, QR CODE",
+      "STORAGE": "Internal / USB"
+    }
+  },
+  {
+    "id": "VP-101H",
+    "name": "Semi Automatic Strapping Machine - 101 H",
+    "category": "Strapping Machine",
+    "description": "Standard semi-automatic strapping machine for general use.",
+    "image": "/products/sasm.png",
+    "fallbackImage": "/custom-machine.png",
+    "specs": {
+      "MIN STRAP SIZE": "60*30",
+      "SPEED": "1.5",
+      "STRAP WIDTH": "6-15",
+      "STRAP FORCE": "450",
+      "POWER": "220V, 50Hz",
+      "DIMENSION": "900*580*750",
+      "WEIGHT": "90"
+    }
+  },
+  {
+    "id": "VP-102PL",
+    "name": "Automatic Taping & Strapping Machine - VP 102PL",
+    "category": "Strapping Machine",
+    "description": "Combined taping and strapping machine for end-of-line packaging.",
+    "image": "/products/asm.png",
+    "fallbackImage": "/expertise.png",
+    "specs": {
+      "POWER SUPPLY": "110V/220V/240V",
+      "PACKING SIZE": "MAX-500*500MM",
+      "TAPE WIDTH": "50MM OR 76MM",
+      "TABLE HEIGHT": "570~770MM",
+      "CAPACITY": "20 Cartons/min",
+      "DIMENSION": "1373*900*1375MM"
+    }
+  },
+  {
+    "id": "VP-6540-5540L",
+    "name": "Semi Automatic Web Sealer - VP 6540/5540L",
+    "category": "Sealer Machine",
+    "description": "Semi-automatic web sealer with integrated shrink tunnel.",
+    "image": "/products/SealerM/SAwswst_7.jpeg",
+    "fallbackImage": "/custom-machine.png",
+    "specs": {
+      "VOLTAGE": "300/50 - 380/50",
+      "POWER": "1.5/21",
+      "SPEED": "0~12",
+      "MAX SEALING": "650",
+      "AIR PRESSURE": "6",
+      "WEIGHT": "300"
+    }
+  },
+  {
+    "id": "VP-S3020-4535",
+    "name": "Shrink Tunnel - VPS 3020/4525/4535/6535",
+    "category": "Sealer Machine",
+    "description": "Industrial shrink tunnel for high-speed production lines.",
+    "image": "/products/SealerM/shrinkT .png",
+    "fallbackImage": "/expertise.png",
+    "specs": {
+      "VOLTAGE": "220/50 - 380/50",
+      "POWER": "3.3-12.5",
+      "LOADING": "5-30",
+      "SPEED": "0~10",
+      "WEIGHT": "40-150"
+    }
+  },
+  {
+    "id": "VPS-3020-MINI",
+    "name": "Table Top Mini Shrink Tunnel - VPS 3020",
+    "category": "Sealer Machine",
+    "description": "Compact table top shrink tunnel for small products.",
+    "image": "/products/SealerM/8.jpg",
+    "fallbackImage": "/custom-machine.png",
+    "specs": {
+      "VOLTAGE": "220/50",
+      "POWER": "4.5",
+      "LOADING": "10",
+      "SPEED": "0~10",
+      "WEIGHT": "70"
+    }
+  },
+  {
+    "id": "VP-5545A",
+    "name": "Automatic L-Sealer - VP 5545A",
+    "category": "Sealer Machine",
+    "description": "Automatic L-sealer for high-efficiency shrink wrapping.",
+    "image": "/products/SealerM/27.jpeg",
+    "fallbackImage": "/expertise.png",
+    "specs": {
+      "VOLTAGE": "220V/50-60Hz",
+      "POWER": "1.3Kw",
+      "CAPACITY": "0-20packs",
+      "DIMENSION": "1700*900*1400mm",
+      "WEIGHT": "320Kg"
+    }
+  },
+  {
+    "id": "VP-102-TU",
+    "name": "Carton Sealer - VP 102 TU",
+    "category": "Sealer Machine",
+    "description": "Reliable carton sealer for uniform box sizes.",
+    "image": "/products/SealerM/9.jpeg",
+    "fallbackImage": "/custom-machine.png",
+    "specs": {
+      "MODE": "101H",
+      "SPEED": "1.5",
+      "STRAP WIDTH": "6-15",
+      "DIMENSION": "900*580*750",
+      "WEIGHT": "90"
+    }
+  },
+  {
+    "id": "VP-4520L",
+    "name": "Automatic Side Sealing Machine - VP 4520L",
+    "category": "Sealer Machine",
+    "description": "Automatic side sealing machine for infinite length products.",
+    "image": "/products/SealerM/28.png",
+    "fallbackImage": "/expertise.png",
+    "specs": {
+      "SEALING SIZE": "W450",
+      "POWER": "1.40/11.7",
+      "VOLTAGE": "220V-380V",
+      "AIR PRESSURE": "5",
+      "WEIGHT": "340/260"
+    }
+  },
+  {
+    "id": "VP-FOIL",
+    "name": "Foil Sealing Machine - VP Foil Sealing",
+    "category": "Sealer Machine",
+    "description": "Induction foil sealing machine for leak-proof containers.",
+    "image": "/products/SealerM/21.png",
+    "fallbackImage": "/custom-machine.png",
+    "specs": {
+      "CAPACITY": "500 Pouch/Hour",
+      "GRADE": "Manual",
+      "VOLTAGE": "220V",
+      "WEIGHT": "8KG",
+      "WIDTH": "152MM"
+    }
+  },
+  {
+    "id": "VP-8-24-INCH",
+    "name": "Hand Sealing Machine - VP 8-24 INCH",
+    "category": "Sealer Machine",
+    "description": "Simple hand impulse sealer for various bag sizes.",
+    "image": "/products/SealerM/32.png",
+    "fallbackImage": "/expertise.png",
+    "specs": {
+      "GRADE": "MANUAL",
+      "LENGTH": "24INCH",
+      "POWER": "600W",
+      "VOLTAGE": "240V",
+      "WEIGHT": "4.9KG"
+    }
+  },
+  {
+    "id": "VP-UTS",
+    "name": "Ultra Sonic Tube Sealing Machine - VP UTS",
+    "category": "Sealer Machine",
+    "description": "Ultrasonic tube sealer for cosmetics and pharmaceuticals.",
+    "image": "/products/SealerM/34.png",
+    "fallbackImage": "/custom-machine.png",
+    "specs": {
+      "POWER SUPPLY": "220V/50W",
+      "DIAMETER": "5-80mm",
+      "SPEED": "20 Times/min",
+      "FREQUENCY": "20khz",
+      "WEIGHT": "80"
+    }
+  },
+  {
+    "id": "VPFPS-350-800",
+    "name": "Foot Pedal Sealing Machine - VPFPS 350-800",
+    "category": "Sealer Machine",
+    "description": "Heavy-duty foot pedal sealer for large bags.",
+    "image": "/products/SealerM/FPsm.jpeg",
+    "fallbackImage": "/expertise.png",
+    "specs": {
+      "LENGTH": "350-800",
+      "WIDTH": "5",
+      "VOLTAGE": "220/50",
+      "POWER": "1200-1800",
+      "WEIGHT": "19-29"
+    }
+  },
+  {
+    "id": "VP-900V",
+    "name": "Continuous Band Sealer Vertical - VP 900V",
+    "category": "Continuous Band Sealing Machine",
+    "description": "Vertical continuous band sealer for liquid and powder pouches.",
+    "image": "/products/cbsv.png",
+    "fallbackImage": "/custom-machine.png",
+    "specs": {
+      "VOLTAGE": "220v/50hz",
+      "POWER": "650",
+      "SPEED": "0~12",
+      "WIDTH": "8~10",
+      "TEMPERATURE": "0~300",
+      "WEIGHT": "37"
+    }
+  },
+  {
+    "id": "VP-900L",
+    "name": "Continuous Band Sealer Horizontal - VP 900L",
+    "category": "Continuous Band Sealing Machine",
+    "description": "Horizontal continuous band sealer for efficient production lines.",
+    "image": "/products/cbsh.png",
+    "fallbackImage": "/expertise.png",
+    "specs": {
+      "VOLTAGE": "220v/50hz",
+      "POWER": "650",
+      "SPEED": "0~12",
+      "WIDTH": "8~10",
+      "TEMPERATURE": "0~300",
+      "WEIGHT": "32kg"
+    }
+  },
+  {
+    "id": "VP-900VW",
+    "name": "Band Sealer Nitrogen Flushing - VP 900vw",
+    "category": "Continuous Band Sealing Machine",
+    "description": "Band sealer with nitrogen flushing for extended shelf life.",
+    "image": "/products/cbsnf.png",
+    "fallbackImage": "/custom-machine.png",
+    "specs": {
+      "VOLTAGE": "220v/50hz",
+      "POWER": "750",
+      "SPEED": "0~12",
+      "LOADING": "5kg",
+      "WEIGHT": "50kg"
+    }
+  },
+  {
+    "id": "VP-5540-CHAMBER",
+    "name": "Shrink Chamber - VP 5540",
+    "category": "Shrink Chamber",
+    "description": "Compact shrink chamber for professional packaging.",
+    "image": "/products/shrinkC/18.jpeg",
+    "fallbackImage": "/expertise.png",
+    "specs": {
+      "VOLTAGE": "AC 220/50",
+      "POWER": "4",
+      "SPEED": "700~100",
+      "WEIGHT": "80",
+      "PACKING DIM": "500*375*250"
+    }
+  },
+  {
+    "id": "VP-VP300",
+    "name": "Vacuum Packing Machine (Table Top) - VP VP300",
+    "category": "Vacuum Packing Machine",
+    "description": "Compact table top vacuum packer for small businesses.",
+    "image": "/products/vpm/10.png",
+    "fallbackImage": "/custom-machine.png",
+    "specs": {
+      "WEIGHT": "40",
+      "CHAMBER SIZE": "380*295*65",
+      "VOLTAGE": "220/50-60",
+      "SEALING SIZE": "280*2",
+      "MOTOR POWER": "370W"
+    }
+  },
+  {
+    "id": "VP-400-500-600",
+    "name": "Vacuum Packing Machine (Single Chamber) - VP 400/500/600",
+    "category": "Vacuum Packing Machine",
+    "description": "Single chamber vacuum packer for medium volume needs.",
+    "image": "/products/vpm/11.png",
+    "fallbackImage": "/expertise.png",
+    "specs": {
+      "CHAMBER": "Single (Fibre Top)",
+      "VOLTAGE": "220V/50Hz",
+      "SEALING POWER": "500/750/1000",
+      "SEALING LENGTH": "400/500/500",
+      "WEIGHT": "110/125/150"
+    }
+  },
+  {
+    "id": "VP-400-500-600-2SB",
+    "name": "Vacuum Packing Machine (Double Chamber) - VP 2SB",
+    "category": "Vacuum Packing Machine",
+    "description": "Double chamber vacuum packer for high volume industrial use.",
+    "image": "/products/vpm/12.png",
+    "fallbackImage": "/custom-machine.png",
+    "specs": {
+      "CHAMBER": "DOUBLE (SS HUD)",
+      "VOLTAGE": "440V/50Hz",
+      "PUMP POWER": "1500",
+      "SEALING LENGTH": "600",
+      "WEIGHT": "240"
+    }
+  },
+  {
+    "id": "VP-600V-VACUUM",
+    "name": "Vacuum Packing Machine (Vertical Type) - VP 600V",
+    "category": "Vacuum Packing Machine",
+    "description": "Vertical vacuum packer for large bags and powders.",
+    "image": "/products/vpm/13.png",
+    "fallbackImage": "/expertise.png",
+    "specs": {
+      "VOLTAGE": "380V/50Hz",
+      "SEALING POWER": "600/1000",
+      "MOTOR POWER": "750",
+      "SEALING LENGTH": "600/1000",
+      "WEIGHT": "255"
+    }
+  },
+  {
+    "id": "VP-TW450-CLING",
+    "name": "Cling Film Wrapping Machine - VP TW450",
+    "category": "Wrapping Machine",
+    "description": "Manual cling film wrapper with integrated heat cutter.",
+    "image": "/products/WRAPPINGM/ClingFilmWM.png",
+    "fallbackImage": "/custom-machine.png",
+    "specs": {
+      "VOLTAGE": "AC 220/50",
+      "POWER": "300",
+      "WIDTH": "420",
+      "TEMPERATURE": "160",
+      "WEIGHT": "6.5"
+    }
+  },
+  {
+    "id": "VP-BW600-STRETCH",
+    "name": "Box Stretch Wrapping Machine - VP BW 600",
+    "category": "Wrapping Machine",
+    "description": "PLC-controlled box stretch wrapper for uniform security.",
+    "image": "/products/WRAPPINGM/BoxStretchWM.png",
+    "fallbackImage": "/expertise.png",
+    "specs": {
+      "MAX WRAPPING": "600*600*600",
+      "EFFICIENCY": "20-40",
+      "SPEED": "3-20",
+      "LOADING": "50",
+      "CONTROL": "PLC"
+    }
+  },
+  {
+    "id": "VP-2100-STRETCH",
+    "name": "Box Stretch Wrapping Machine - VP 2100",
+    "category": "Wrapping Machine",
+    "description": "Heavy-duty industrial stretch wrapper for large boxes.",
+    "image": "/products/WRAPPINGM/PSwm.jpeg",
+    "fallbackImage": "/expertise.png",
+    "specs": {
+      "MAX WRAPPING": "1200*1200",
+      "EFFICIENCY": "20-40",
+      "LOADING": "2000",
+      "CARRIAGE": "PRE-STRETCH",
+      "CONTROL": "PLC"
+    }
+  }
+]
