@@ -1,15 +1,85 @@
 import { Helmet } from 'react-helmet-async';
-import { motion } from 'motion/react';
-import { MapPin, Phone, Mail, Send, ChevronDown } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
+import { MapPin, Phone, Mail, Send, ChevronDown, CheckCircle } from 'lucide-react';
 import PageTransition from '../components/PageTransition';
+import { useState } from 'react';
 
 export default function Contact() {
+  const [formData, setFormData] = useState({
+    fullName: '',
+    companyName: '',
+    designation: '',
+    phoneNumber: '',
+    emailAddress: '',
+    requirements: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    const formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSe40phHp1ofFT6OmIT02XWsYG2i86och4VKjkGaR260_BSOtQ/formResponse';
+    const urlSearchParams = new URLSearchParams();
+    urlSearchParams.append('entry.1229668368', formData.fullName);
+    urlSearchParams.append('entry.957197724', formData.companyName);
+    urlSearchParams.append('entry.236868150', formData.designation);
+    urlSearchParams.append('entry.1966890761', formData.phoneNumber);
+    urlSearchParams.append('entry.1611258772', formData.emailAddress);
+    urlSearchParams.append('entry.2144211961', formData.requirements);
+
+    try {
+      await fetch(formUrl, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: urlSearchParams
+      });
+      setSubmitSuccess(true);
+      setFormData({
+        fullName: '',
+        companyName: '',
+        designation: '',
+        phoneNumber: '',
+        emailAddress: '',
+        requirements: ''
+      });
+      setTimeout(() => setSubmitSuccess(false), 5000);
+    } catch (error) {
+      console.error('Error submitting form:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <PageTransition>
       <Helmet>
         <title>Contact Us - V Packs</title>
         <meta name="description" content="Get in touch with V Packs. Whether you need technical support or sales inquiry, our team is ready to assist you." />
       </Helmet>
+
+      {/* Toast Notification */}
+      <AnimatePresence>
+        {submitSuccess && (
+          <motion.div
+            initial={{ opacity: 0, y: 50, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 20, scale: 0.9 }}
+            className="fixed bottom-4 right-4 md:bottom-10 md:right-10 z-50 bg-green-600 text-white px-6 py-4 rounded-xl shadow-2xl flex items-center gap-3 font-medium"
+          >
+            <CheckCircle className="w-6 h-6" />
+            Form submitted successfully!
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Hero Header */}
       <section className="pt-32 pb-24 text-center max-w-4xl mx-auto px-gutter space-y-6">
@@ -70,37 +140,35 @@ export default function Contact() {
           <div className="bg-white border border-outline-variant/30 rounded-2xl p-10 lg:p-16 shadow-2xl space-y-12 h-full">
             <h2 className="text-4xl font-bold text-primary">Send a Message</h2>
             
-            <form className="space-y-8" onSubmit={(e) => e.preventDefault()}>
+            <form className="space-y-8" onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <InputGroup label="Full Name" placeholder="Jane Doe" type="text" />
-                <InputGroup label="Phone Number" placeholder="+91 00000 00000" type="tel" />
+                <InputGroup label="Full Name" name="fullName" value={formData.fullName} onChange={handleChange} required placeholder="Jane Doe" type="text" />
+                <InputGroup label="Company Name" name="companyName" value={formData.companyName} onChange={handleChange} required placeholder="Acme Corp" type="text" />
               </div>
 
-              <InputGroup label="Email Address" placeholder="jane@company.com" type="email" />
-
-              <div className="space-y-3">
-                <label className="label-caps !text-[10px]">Inquiry Type</label>
-                <div className="relative group">
-                  <select className="w-full bg-surface-container/30 border border-outline-variant/30 rounded-lg px-5 py-4 text-sm font-medium text-primary focus:border-secondary focus:ring-1 focus:ring-secondary transition-all outline-none appearance-none cursor-pointer">
-                    <option>Sales Inquiry</option>
-                    <option>Technical Support</option>
-                    <option>Feedbacks</option>
-                  </select>
-                  <ChevronDown className="absolute right-5 top-1/2 -translate-y-1/2 w-5 h-5 text-on-surface-variant pointer-events-none group-hover:text-secondary transition-colors" />
-                </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <InputGroup label="Designation" name="designation" value={formData.designation} onChange={handleChange} required placeholder="Manager" type="text" />
+                <InputGroup label="Phone Number" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} required placeholder="+91 00000 00000" type="tel" />
               </div>
 
+              <InputGroup label="Email Address" name="emailAddress" value={formData.emailAddress} onChange={handleChange} required placeholder="jane@company.com" type="email" />
+
               <div className="space-y-3">
-                <label className="label-caps !text-[10px]">Message</label>
+                <label className="label-caps !text-[10px]">Requirements</label>
                 <textarea 
+                  name="requirements"
+                  value={formData.requirements}
+                  onChange={handleChange}
+                  required
                   rows={5}
-                  placeholder="How can we help you today?"
+                  placeholder="Tell us about your requirements..."
                   className="w-full bg-surface-container/30 border border-outline-variant/30 rounded-lg px-5 py-4 text-sm font-medium text-primary focus:border-secondary focus:ring-1 focus:ring-secondary transition-all outline-none resize-none"
                 />
               </div>
 
-              <button className="btn-primary w-full md:w-auto px-12 py-5 group shadow-lg shadow-primary/10">
-                Send Inquiry <Send className="inline-block ml-2 w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+              <button disabled={isSubmitting} type="submit" className="btn-primary w-full md:w-auto px-12 py-5 group shadow-lg shadow-primary/10 disabled:opacity-70 disabled:cursor-not-allowed">
+                {isSubmitting ? 'Sending...' : submitSuccess ? 'Message Sent!' : 'Send Inquiry'} 
+                {!isSubmitting && !submitSuccess && <Send className="inline-block ml-2 w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />}
               </button>
             </form>
           </div>
@@ -126,12 +194,16 @@ function ContactInfoItem({ icon, label, value }: any) {
   );
 }
 
-function InputGroup({ label, placeholder, type }: any) {
+function InputGroup({ label, placeholder, type, name, value, onChange, required }: any) {
   return (
     <div className="space-y-3">
       <label className="label-caps !text-[10px]">{label}</label>
       <input 
         type={type}
+        name={name}
+        value={value}
+        onChange={onChange}
+        required={required}
         placeholder={placeholder}
         className="w-full bg-surface-container/30 border border-outline-variant/30 rounded-lg px-5 py-4 text-sm font-medium text-primary focus:border-secondary focus:ring-1 focus:ring-secondary transition-all outline-none"
       />
