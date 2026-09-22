@@ -2,16 +2,19 @@ import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'motion/react';
 import { MapPin, Phone, Mail, Send, ChevronDown, CheckCircle } from 'lucide-react';
 import PageTransition from '../components/PageTransition';
-import { useState } from 'react';
+import { PageHero, CallToAction } from '../components/Industrial';
+import { useSearchParams } from 'react-router-dom';
+import React, { useState } from 'react';
 
 export default function Contact() {
+  const [searchParams] = useSearchParams();
   const [formData, setFormData] = useState({
     fullName: '',
     companyName: '',
     designation: '',
     phoneNumber: '',
     emailAddress: '',
-    requirements: ''
+    requirements: searchParams.get('product') ? `I'm interested in ${searchParams.get('product')}.` : searchParams.get('service') ? `I'd like to discuss ${searchParams.get('service')}.` : ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
@@ -82,22 +85,11 @@ export default function Contact() {
       </AnimatePresence>
 
       {/* Hero Header */}
-      <section className="pt-32 pb-24 text-center max-w-4xl mx-auto px-gutter space-y-6">
-        <motion.h1 
-          className="text-display-lg text-primary leading-tight"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-        >
-          Get in Touch with V Packs
-        </motion.h1>
-        <p className="text-body-lg text-on-surface-variant max-w-2xl mx-auto leading-relaxed">
-          Whether you need technical support, are interested in our packaging solutions, or have general inquiries, our team is ready to assist you.
-        </p>
-      </section>
+      <PageHero variant="contact" title="Get in Touch" description="Let’s build your packaging solution together." />
 
-      <div className="max-w-container-max mx-auto px-gutter pb-32 grid grid-cols-1 lg:grid-cols-12 gap-12">
+      <div className="contact-layout max-w-container-max mx-auto px-gutter py-16 grid grid-cols-1 lg:grid-cols-12 gap-12">
         {/* Left Column: Info & Map */}
-        <div className="lg:col-span-5 space-y-12">
+        <div className="contact-info lg:col-span-5 space-y-12">
           {/* Contact Methods */}
           <div className="bg-surface-container/30 border border-outline-variant/30 rounded-2xl p-10 space-y-10 shadow-sm">
             <h2 className="text-3xl font-bold text-primary border-b border-outline-variant/10 pb-6">Contact Details</h2>
@@ -123,7 +115,7 @@ export default function Contact() {
 
           {/* Map Image (Stylized) */}
           <div className="relative rounded-2xl overflow-hidden aspect-[4/3] border border-outline-variant/30 shadow-2xl">
-            <iframe 
+            <iframe title="V Packs location in Madurai" 
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.9250611964962!2d78.1237319!3d9.940193299999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b00c5b235257bc3%3A0x7b828b27d2e5d21e!2sV%20PACKS!5e0!3m2!1sen!2sin!4v1780307744949!5m2!1sen!2sin" 
               width="100%" 
               height="100%" 
@@ -136,9 +128,9 @@ export default function Contact() {
         </div>
 
         {/* Right Column: Contact Form */}
-        <div className="lg:col-span-7">
+        <div className="contact-form lg:col-span-7">
           <div className="bg-white border border-outline-variant/30 rounded-2xl p-10 lg:p-16 shadow-2xl space-y-12 h-full">
-            <h2 className="text-4xl font-bold text-primary">Send a Message</h2>
+            <h2 className="text-4xl font-bold text-primary">Send Us an Enquiry</h2>
             
             <form className="space-y-8" onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -154,9 +146,9 @@ export default function Contact() {
               <InputGroup label="Email Address" name="emailAddress" value={formData.emailAddress} onChange={handleChange} required placeholder="jane@company.com" type="email" />
 
               <div className="space-y-3">
-                <label className="label-caps !text-[10px]">Requirements</label>
+                <label htmlFor="requirements" className="label-caps !text-[10px]">Requirements</label>
                 <textarea 
-                  name="requirements"
+                  id="requirements" name="requirements"
                   value={formData.requirements}
                   onChange={handleChange}
                   required
@@ -174,6 +166,7 @@ export default function Contact() {
           </div>
         </div>
       </div>
+      <CallToAction />
     </PageTransition>
   );
 }
@@ -197,9 +190,9 @@ function ContactInfoItem({ icon, label, value }: any) {
 function InputGroup({ label, placeholder, type, name, value, onChange, required }: any) {
   return (
     <div className="space-y-3">
-      <label className="label-caps !text-[10px]">{label}</label>
+      <label htmlFor={name} className="label-caps !text-[10px]">{label}</label>
       <input 
-        type={type}
+        id={name} type={type}
         name={name}
         value={value}
         onChange={onChange}

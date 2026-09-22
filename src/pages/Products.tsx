@@ -4,7 +4,10 @@ import { useSearchParams } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowRight, ChevronLeft, ChevronRight, RefreshCcw, Search as SearchIcon, X } from 'lucide-react';
 import PageTransition from '../components/PageTransition';
+import { PageHero, CallToAction } from '../components/Industrial';
+import { Link } from 'react-router-dom';
 import productData from '../data/products.json';
+import { matchesProduct } from '../data/productSearch';
 
 type Product = {
   id: string;
@@ -40,9 +43,27 @@ export default function Products() {
   const [activeCategory, setActiveCategory] = useState('All Products');
   const [currentPage, setCurrentPage] = useState(1);
   const [direction, setDirection] = useState(0);
-  const productsPerPage = 3;
+  const productsPerPage = 9;
   const searchQuery = searchParams.get('q') || '';
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+
+  useEffect(() => {
+    if (!selectedProduct) return;
+    const previousFocus = document.activeElement as HTMLElement | null;
+    const timer = window.setTimeout(() => document.querySelector<HTMLButtonElement>('[aria-label="Close details"]')?.focus(), 50);
+    const handleKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setSelectedProduct(null);
+      if (event.key === 'Tab') {
+        const elements = Array.from(document.querySelectorAll<HTMLElement>('[role="dialog"] button, [role="dialog"] a[href]'));
+        const first = elements[0];
+        const last = elements[elements.length - 1];
+        if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
+        else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
+      }
+    };
+    document.addEventListener('keydown', handleKey);
+    return () => { window.clearTimeout(timer); document.removeEventListener('keydown', handleKey); previousFocus?.focus(); };
+  }, [selectedProduct]);
 
   useEffect(() => {
     if (selectedProduct) {
@@ -56,13 +77,12 @@ export default function Products() {
   }, [selectedProduct]);
 
   const filteredProducts = useMemo(() => {
-    return products.filter((product) => {
+    const matches = products.filter((product) => {
       const matchesCategory = activeCategory === 'All Products' || product.category === activeCategory;
-      const matchesSearch = !searchQuery || 
-        product.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
-        product.description.toLowerCase().includes(searchQuery.toLowerCase());
+      const matchesSearch = matchesProduct(product, searchQuery);
       return matchesCategory && matchesSearch;
     });
+    return matches;
   }, [activeCategory, searchQuery]);
 
   const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
@@ -129,19 +149,12 @@ export default function Products() {
       </Helmet>
 
       {/* Page Header */}
-      <section className="bg-white border-b border-outline-variant/20 py-20 px-gutter">
-        <div className="max-w-container-max mx-auto">
-          <h1 className="text-4xl md:text-5xl font-bold text-primary mb-6">Packaging Machinery Catalog</h1>
-          <p className="text-lg text-on-surface-variant max-w-3xl leading-relaxed">
-            Explore our comprehensive range of high-performance packaging solutions engineered for reliability, speed, and precision in demanding industrial environments.
-          </p>
-        </div>
-      </section>
+      <PageHero variant="products" title="Our Machines" description="High-performance packaging machines for every need. Explore the original V Packs range." />
 
       {/* Catalog Content */}
-      <div id="catalog" className="max-w-container-max mx-auto px-gutter py-16 grid grid-cols-1 lg:grid-cols-4 gap-12 scroll-mt-24">
+      <div id="catalog" className="catalog-layout max-w-container-max mx-auto px-gutter py-16 grid grid-cols-1 lg:grid-cols-4 gap-12 scroll-mt-24">
         {/* Sidebar Filters */}
-        <aside className="lg:col-span-1 space-y-10">
+        <aside className="catalog-filters lg:col-span-1 space-y-10">
           <div className="space-y-6">
             <h3 className="label-caps">Machine Type</h3>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-1 gap-x-4 gap-y-3">
@@ -153,7 +166,7 @@ export default function Products() {
                   <input 
                     type="radio" 
                     name="category" 
-                    className="hidden" 
+                    className="sr-only" 
                     checked={activeCategory === cat} 
                     onChange={() => setActiveCategory(cat)} 
                   />
@@ -167,15 +180,29 @@ export default function Products() {
 
 
 
-          <button className="flex items-center gap-2 text-secondary font-bold text-xs uppercase hover:text-primary transition-colors">
+          <button onClick={() => { setActiveCategory('All Products'); setSearchParams({}); }} className="flex items-center gap-2 text-secondary font-bold text-xs uppercase hover:text-primary transition-colors">
             <RefreshCcw className="w-4 h-4" />
             Reset Filters
           </button>
         </aside>
 
         {/* Main Grid */}
-        <main className="lg:col-span-3 space-y-12">
-          {/* Active Filters & Sort */}
+        <main className="catalog-main lg:col-span-3 space-y-12">
+          <div className="catalog-search">
+            <label htmlFor="catalog-search">Search products</label>
+            <div className="catalog-search-field">
+              <SearchIcon size={20} aria-hidden="true" />
+              <input id="catalog-search" type="search" placeholder="Search machines, categories, or model numbers…" value={searchQuery} onChange={event => {
+                const params = new URLSearchParams(searchParams);
+                if (event.target.value) params.set('q', event.target.value);
+                else params.delete('q');
+                setCurrentPage(1);
+                setSearchParams(params, { replace: true, preventScrollReset: true });
+              }} />
+            </div>
+            <p role="status">{filteredProducts.length} products found</p>
+          </div>
+          {/* Active Filters */}
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 pb-8 border-b border-outline-variant/10">
             <div className="flex items-center gap-2 flex-wrap">
               <span className="text-sm text-on-surface-variant">Active Filters:</span>
@@ -194,14 +221,6 @@ export default function Products() {
               )}
             </div>
 
-            <div className="flex items-center gap-4">
-              <span className="label-caps !text-[10px]">Sort By:</span>
-              <select className="bg-white border border-outline-variant/30 rounded-lg px-4 py-2 text-xs font-bold text-primary focus:ring-secondary focus:border-secondary transition-all cursor-pointer outline-none">
-                <option>Recommended</option>
-                <option>Speed (High to Low)</option>
-                <option>Capacity (High to Low)</option>
-              </select>
-            </div>
           </div>
 
           {/* Product Grid */}
@@ -219,13 +238,15 @@ export default function Products() {
                     x: { type: "spring", stiffness: 200, damping: 25 },
                     opacity: { duration: 0.25 }
                   }}
-                  className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8"
+                  className="catalog-grid grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8"
                 >
                   {visibleProducts.map((product) => (
                     <div 
                       key={product.id}
+                      role="button" tabIndex={0} aria-label={`View ${product.name}`}
+                      onKeyDown={e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setSelectedProduct(product); } }}
                       onClick={() => setSelectedProduct(product)}
-                      className="bg-white rounded-xl border border-outline-variant/20 overflow-hidden flex flex-col group hover:shadow-2xl transition-all duration-500 cursor-pointer"
+                      className="catalog-card bg-white rounded-xl border border-outline-variant/20 overflow-hidden flex flex-col group hover:shadow-2xl transition-all duration-500 cursor-pointer"
                     >
                       <div className="aspect-[4/3] bg-surface-bright relative overflow-hidden group">
                         <img
@@ -241,10 +262,12 @@ export default function Products() {
                         </div>
                       </div>
 
-                      <div className="p-6 flex-grow flex flex-col justify-center items-center text-center border-t border-outline-variant/5">
+                      <div className="p-6 flex-grow flex flex-col items-start text-left border-t border-outline-variant/5">
                         <h3 className="text-base font-bold text-primary group-hover:text-secondary transition-colors leading-snug line-clamp-2">
                           {product.name}
                         </h3>
+                        <p className="catalog-description">{product.description}</p>
+                        <span className="text-action">View details <ArrowRight size={15} /></span>
                       </div>
                     </div>
                   ))}
@@ -330,7 +353,7 @@ export default function Products() {
       {/* Specifications Details Modal */}
       <AnimatePresence>
         {selectedProduct && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10">
+          <div role="dialog" aria-modal="true" aria-label={selectedProduct.name} onKeyDown={e => { if (e.key === "Escape") setSelectedProduct(null); }} className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10">
             {/* Backdrop with Blur */}
             <motion.div
               initial={{ opacity: 0 }}
@@ -352,7 +375,7 @@ export default function Products() {
               <button
                 onClick={() => setSelectedProduct(null)}
                 className="absolute top-4 right-4 p-2 rounded-full bg-white/80 hover:bg-secondary hover:text-white text-primary transition-all shadow-md z-20 border border-outline-variant/20 cursor-pointer"
-                aria-label="Close details"
+                autoFocus aria-label="Close details"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -429,6 +452,7 @@ export default function Products() {
                 </div>
 
                 {/* Bottom Actions */}
+                <Link to={`/contact?product=${encodeURIComponent(selectedProduct.name)}`} className="action action-red mt-6">Enquire about this machine <ArrowRight size={16}/></Link>
                 <div className="pt-6 mt-6 border-t border-outline-variant/20 flex gap-3">
                   <button
                     onClick={() => setSelectedProduct(null)}
@@ -442,6 +466,7 @@ export default function Products() {
           </div>
         )}
       </AnimatePresence>
+      <CallToAction />
     </PageTransition>
   );
 }
